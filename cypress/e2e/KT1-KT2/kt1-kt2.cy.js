@@ -45,6 +45,32 @@ describe("login service", () => {
 
     cy.contains(" Iniciar sesión ").click();
 
+    cy.get("ion-toast")
+      .should("exist")
+      .shadow()
+      .contains(".toast-message", "La contraseña es incorrecta.");
+
+    cy.wait(4000);
+
+    cy.get("Iniciar Sesión").should("not.exist");
+  });
+
+  it("user log in with valid invalid email (KTT13)", () => {
+    cy.get('input[name="email"]').type(
+      "kanedrivernotregisteredtmail@mailinator.com"
+    );
+    cy.get('input[name="password"]').type("12345678");
+
+    cy.contains(" Iniciar sesión ").click();
+
+    cy.get("ion-toast")
+      .should("exist")
+      .shadow()
+      .contains(
+        ".toast-message",
+        "Los credenciales ingresados no son válidos."
+      );
+
     cy.wait(4000);
 
     cy.get("Iniciar Sesión").should("not.exist");
