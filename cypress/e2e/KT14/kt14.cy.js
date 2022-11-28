@@ -5,7 +5,7 @@ describe("Alerts on page", () => {
       cy.visit("https://kane-taxi.web.app/login");
     });
   
-    it("has alert on approval dialog (KTT12)", () => {
+    it("Has alert on expired files (KTT23)", () => {
         cy.get('input[name="email"]').type(
             "kanedriver04@mailinator.com"
             );
