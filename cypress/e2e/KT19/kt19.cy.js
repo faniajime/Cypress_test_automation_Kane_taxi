@@ -15,4 +15,16 @@ describe("Alerts on page", () => {
         cy.get("ion-toast").should("exist").shadow().contains(".toast-message", "La administración del sistema debe verificar sus datos. Este proceso puede tarde un tiempo.");
         
     });
+
+    it("has alert on wrong password (KTT23)", () => {
+        cy.get('input[name="email"]').type(
+            "testtaxi@mailinator.com"
+            );
+        cy.get('input[name="password"]').type("asdf1234");
+        cy.contains(" Iniciar sesión ").click();
+        cy.wait(2000);
+        cy.get("ion-toast").should("exist").shadow().contains(".toast-message", "La contraseña es incorrecta.");
+        
+    });
+
 });
