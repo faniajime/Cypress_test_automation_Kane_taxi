@@ -1,7 +1,7 @@
 describe('user needs the panic btn', () => {
-  it('login', () => {
+  it('user log in with valid credentials (KTT3)', () => {
     cy.visit('https://kane-taxi.web.app/')
-
+    cy.clearLocalStorage()
     cy.wait(2000)
 
     //Test input email
@@ -25,6 +25,11 @@ describe('user needs the panic btn', () => {
     cy.get('.fab-horizontal-start > .ion-color').should('be.visible')
 
 
+  })
+
+  it('user finds panic btn (KTT37)', () =>{
+    //Test Panic Btn
+    cy.get('.fab-horizontal-start > .ion-color').should('be.visible')
   })
 
   it('logout', () =>{
